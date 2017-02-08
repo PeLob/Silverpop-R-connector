@@ -95,12 +95,15 @@ doSomething <- function(datadir) {
 	last_file_df <- read.csv("in/tables/last_file.csv")
 	last_file <- last_file_df[1,1]
 	
+	last_file <- "Raw Recipient Data Export Feb 08 2017 11-16-33 AM 793.zip"
+	
 	zipfile <- getBinaryURL(paste(url,last_file,sep=""), userpwd = userpwd)
 	writeBin(zipfile, "test.zip")
 	unzip("test.zip")
 
 	csv_file <- gsub("zip","csv",last_file)
-
+	
+	
 	df <- read.csv(csv_file)
 	
 	write.csv(df, file = file.path(datadir, "out/tables/events.csv"), row.names = FALSE)
