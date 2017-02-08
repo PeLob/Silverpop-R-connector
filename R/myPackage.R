@@ -5,6 +5,7 @@
 #' @param datadir Path to data directory.
 doSomething <- function(datadir) {
    
+
   
 	# do something
 	app <- DockerApplication$new(datadir)
