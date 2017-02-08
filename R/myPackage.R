@@ -3,7 +3,7 @@
 #' @import keboola.r.docker.application
 #' @export
 #' @param datadir Path to data directory.
-requestSilverpopEvents <- function(datadir) {
+doSomething <- function(datadir) {
    
   
 	# do something
