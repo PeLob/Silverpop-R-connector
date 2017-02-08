@@ -15,8 +15,10 @@ requestSilverpopEvents <- function(datadir) {
 	Email <- app$getParameters()$Email
 	UserName <- app$getParameters()$UserName
 	PassWord <- app$getParameters()$PassWord
-	StartDate <- app$getParameters()$StartDate
-	EndDate <- app$getParameters()$EndDate
+	
+	
+	StartDate <- as.character(format(Sys.time()-24*60*60, "%m/%d/%Y %H:%M:%S"))
+	EndDate <- as.character(format(Sys.time(), "%m/%d/%Y %H:%M:%S")) #add 24 hours 
 		
 	  
 	# Authentication request
