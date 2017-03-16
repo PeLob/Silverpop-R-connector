@@ -18,7 +18,7 @@ doSomething <- function(datadir) {
 	PassWord <- app$getParameters()$PassWord
 	
 	
-	StartDate <- as.character(format(Sys.time()-24*60*60, "%m/%d/%Y %H:%M:%S"))
+	StartDate <- as.character(format(Sys.time()-24*60*60*365, "%m/%d/%Y %H:%M:%S"))
 	EndDate <- as.character(format(Sys.time(), "%m/%d/%Y %H:%M:%S")) #add 24 hours 
 		
 	  
@@ -50,6 +50,7 @@ doSomething <- function(datadir) {
 				<RawRecipientDataExport>    
 				<EVENT_DATE_START>StartDate</EVENT_DATE_START>    
 				<EVENT_DATE_END>EndDate</EVENT_DATE_END>    
+				<OPENS>TRUE</OPENS> 				
 				<MOVE_TO_FTP>TRUE</MOVE_TO_FTP> 
 				<EXPORT_FORMAT>0</EXPORT_FORMAT>   
 				<EMAIL>Email</EMAIL>    
