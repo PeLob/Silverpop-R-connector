@@ -18,8 +18,10 @@ doSomething <- function(datadir) {
 	PassWord <- app$getParameters()$PassWord
 	
 	
-	StartDate <- as.character(format(Sys.time()-24*60*60*365, "%m/%d/%Y %H:%M:%S"))
-	EndDate <- as.character(format(Sys.time(), "%m/%d/%Y %H:%M:%S")) #add 24 hours 
+	StartDate <- as.character(format(Sys.time()-24*60*60*730, "%m/%d/%Y %H:%M:%S"))
+	#StartDate <- as.character(format(Sys.time()-24*60*60*365, "%m/%d/%Y %H:%M:%S"))
+	#EndDate <- as.character(format(Sys.time(), "%m/%d/%Y %H:%M:%S")) #add 24 hours
+	EndDate <- as.character(format(Sys.time()-24*60*60*365, "%m/%d/%Y %H:%M:%S"))
 		
 	  
 	# Authentication request
