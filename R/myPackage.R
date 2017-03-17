@@ -49,22 +49,18 @@ doSomething <- function(datadir) {
 	## Date parameters: COULD WE PASS DATE PARAMETERS FROM THE ORCHESTRATION LAYER?
 	body2 <- "<Envelope>
 			  <Body>   
-				<RawRecipientDataExport>    
-				<EVENT_DATE_START>StartDate</EVENT_DATE_START>    
-				<EVENT_DATE_END>EndDate</EVENT_DATE_END>    
-				<OPENS>TRUE</OPENS> 				
+				<ExportTable>    
 				<MOVE_TO_FTP>TRUE</MOVE_TO_FTP> 
 				<EXPORT_FORMAT>0</EXPORT_FORMAT>   
-				<EMAIL>Email</EMAIL>    
-				<ALL_EVENT_TYPES/>    
-				<INCLUDE_INBOX_MONITORING/>   
-				</RawRecipientDataExport>  
+				<EMAIL>Email</EMAIL> 
+				<TABLE_ID>117655</TABLE_ID>
+  				</RawRecipientDataExport>  
 			  </Body> 
 			  </Envelope>"
 
 	# Trick to pass the parameters
-	body2 <- gsub("StartDate", StartDate, body2)
-	body2 <- gsub("EndDate", EndDate, body2)
+	#body2 <- gsub("StartDate", StartDate, body2)
+	#body2 <- gsub("EndDate", EndDate, body2)
 	body2 <- gsub("Email", Email, body2)
 
 	test2 <- POST(url = paste(apiURL,jsessionid,sep=""), body = body2
