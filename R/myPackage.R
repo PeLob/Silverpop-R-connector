@@ -50,10 +50,9 @@ doSomething <- function(datadir) {
 	body2 <- "<Envelope>
 			  <Body>   
 				<ExportTable>    
-				<MOVE_TO_FTP>TRUE</MOVE_TO_FTP> 
-				<EXPORT_FORMAT>0</EXPORT_FORMAT>   
-				<EMAIL>Email</EMAIL> 
 				<TABLE_ID>117655</TABLE_ID>
+				<EMAIL>Email</EMAIL> 
+				<EXPORT_FORMAT>CSV</EXPORT_FORMAT>   
   				</ExportTable>  
 			  </Body> 
 			  </Envelope>"
