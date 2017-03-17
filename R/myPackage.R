@@ -54,7 +54,7 @@ doSomething <- function(datadir) {
 				<EXPORT_FORMAT>0</EXPORT_FORMAT>   
 				<EMAIL>Email</EMAIL> 
 				<TABLE_ID>117655</TABLE_ID>
-  				</RawRecipientDataExport>  
+  				</ExportTable>  
 			  </Body> 
 			  </Envelope>"
 
