@@ -75,6 +75,7 @@ doSomething <- function(datadir) {
 	data <- xmlToDataFrame(nodes)
 
 	fname <- as.character(data[[1]])
+	fname<-substr(fname, 11, 70)
 	
 	fname_df <- data.frame(filename = fname)
  
