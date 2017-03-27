@@ -18,10 +18,8 @@ doSomething <- function(datadir) {
 	PassWord <- app$getParameters()$PassWord
 	
 	
-	#StartDate <- as.character(format(Sys.time()-24*60*60*730, "%m/%d/%Y %H:%M:%S"))
-	#StartDate <- as.character(format(Sys.time()-24*60*60*365, "%m/%d/%Y %H:%M:%S"))
-	#EndDate <- as.character(format(Sys.time(), "%m/%d/%Y %H:%M:%S")) #add 24 hours
-	#EndDate <- as.character(format(Sys.time()-24*60*60*365, "%m/%d/%Y %H:%M:%S"))
+	StartDate <- as.character(format(Sys.time()-24*60*60, "%m/%d/%Y %H:%M:%S"))
+	EndDate <- as.character(format(Sys.time(), "%m/%d/%Y %H:%M:%S")) #add 24 hours 
 		
 	  
 	# Authentication request
@@ -49,17 +47,21 @@ doSomething <- function(datadir) {
 	## Date parameters: COULD WE PASS DATE PARAMETERS FROM THE ORCHESTRATION LAYER?
 	body2 <- "<Envelope>
 			  <Body>   
-				<ExportTable>    
-				<TABLE_ID>117655</TABLE_ID>
-				<EMAIL>Email</EMAIL> 
-				<EXPORT_FORMAT>CSV</EXPORT_FORMAT>   
-  				</ExportTable>  
+				<RawRecipientDataExport>    
+				<EVENT_DATE_START>StartDate</EVENT_DATE_START>    
+				<EVENT_DATE_END>EndDate</EVENT_DATE_END>    
+				<MOVE_TO_FTP>TRUE</MOVE_TO_FTP> 
+				<EXPORT_FORMAT>0</EXPORT_FORMAT>   
+				<EMAIL>Email</EMAIL>    
+				<ALL_EVENT_TYPES/>    
+				<INCLUDE_INBOX_MONITORING/>   
+				</RawRecipientDataExport>  
 			  </Body> 
 			  </Envelope>"
 
 	# Trick to pass the parameters
-	#body2 <- gsub("StartDate", StartDate, body2)
-	#body2 <- gsub("EndDate", EndDate, body2)
+	body2 <- gsub("StartDate", StartDate, body2)
+	body2 <- gsub("EndDate", EndDate, body2)
 	body2 <- gsub("Email", Email, body2)
 
 	test2 <- POST(url = paste(apiURL,jsessionid,sep=""), body = body2
@@ -75,7 +77,6 @@ doSomething <- function(datadir) {
 	data <- xmlToDataFrame(nodes)
 
 	fname <- as.character(data[[1]])
-	fname<-substr(fname, 11, 70)
 	
 	fname_df <- data.frame(filename = fname)
  
